@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #797171;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            margin: 0;
+        }
+        .form-container {
+            background: #56738a;
+            padding: 30px;
+            border-radius: 5-px;
+            box-shadow: 0 0 10px rgba(138, 31, 184, 0.1);
+            width: 45%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #39a862;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #a02e69;
+            border-radius: 5px;
+        }
+        .form-group input[type="password"] {
+            font-family: Arial, sans-serif;
+        }
+        .form-group .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        .form-group .checkbox-group input {
+            margin-right: 15px;
+        }
+        .form-group .captcha {
+            display: flex;
+            align-items: center;
+        }
+        .form-group .captcha img {
+            margin-left: 15px;
+        }
+        .form-group button {
+            background-color: #b10091;
+            color: #36638b;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 55%;
+        }
+        .form-group button:hover {
+            background-color: #9c1a87;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>LinkedIn Registration</h2>
+        <form action="/submit_registration" method="post">
+            <!-- Personal Information -->
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob">
+            </div>
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="checkbox-group">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="radio" id="nonBinary" name="gender" value="non-binary">
+                    <label for="nonBinary">Non-Binary</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="radio" id="preferNotToSay" name="gender" value="prefer-not-to-say">
+                    <label for="preferNotToSay">Prefer not to say</label>
+                </div>
+            </div>
+
+            <!-- Account Details -->
+            <div class="form-group">
+                <label for="password">Create a Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+
+            <!-- Professional Information -->
+            <div class="form-group">
+                <label for="jobTitle">Current Job Title:</label>
+                <input type="text" id="jobTitle" name="jobTitle">
+            </div>
+            <div class="form-group">
+                <label for="company">Company/Organization:</label>
+                <input type="text" id="company" name="company">
+            </div>
+            <div class="form-group">
+                <label for="locationCity">City:</label>
+                <input type="text" id="locationCity" name="locationCity">
+            </div>
+            <div class="form-group">
+                <label for="locationState">State/Province:</label>
+                <input type="text" id="locationState" name="locationState">
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country">
+                    <option value="us">United States</option>
+                    <option value="ca">Canada</option>
+                    <option value="gb">United Kingdom</option>
+                    <!-- Add more countries as needed -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="industry">Industry:</label>
+                <select id="industry" name="industry">
+                    <option value="technology">Technology</option>
+                    <option value="finance">Finance</option>
+                    <option value="healthcare">Healthcare</option>
+                    <!-- Add more industries as needed -->
+                </select>
+            </div>
+
+            <!-- Preferences -->
+            <div class="form-group">
+                <label>Profile Visibility:</label>
+                <div class="checkbox-group">
+                    <input type="radio" id="public" name="visibility" value="public">
+                    <label for="public">Public</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="radio" id="connections" name="visibility" value="connections">
+                    <label for="connections">Connections only</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="radio" id="private" name="visibility" value="private">
+                    <label for="private">Private</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Communication Preferences:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="emailPref" name="communication" value="email">
+                    <label for="emailPref">Email</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="smsPref" name="communication" value="sms">
+                    <label for="smsPref">SMS</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="pushPref" name="communication" value="push">
+                    <label for="pushPref">Push Notifications</label>
+                </div>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="form-group">
+                <label class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.</label>
+                </label>
+            </div>
+
+            <!-- Verification -->
+            <div class="form-group">
+                <label for="captcha">Please verify you're human:</label>
+                <div class="captcha">
+                    <input type="text" id="captcha" name="captcha" required>
+                    <img src="/captcha_image" alt="Captcha">
+                </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit">Create Account</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
